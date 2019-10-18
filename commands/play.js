@@ -1,6 +1,6 @@
 module.exports.permissionRequired = 0
 
-const ytdl = require("ytdl-core"), ytpl = require("ytpl"), ytsr = require("ytsr"), { Util } = require("discord.js");
+const ytdl = require("ytdl-core"), ytpl = require("ytpl"), ytsearch = require("yt-search"), { Util } = require("discord.js");
 
 module.exports.run = async (client, message, args, config, queue) => {
   const voiceChannel = message.member.voiceChannel;
@@ -24,17 +24,18 @@ module.exports.run = async (client, message, args, config, queue) => {
       video = await ytdl.getBasicInfo(url)
     } catch(e) {
       try {
-        const videos = await ytsr(url, 10)
+        const results = await ytsr(url)
+        const videos = results.videos.slice(0, 10)
         let index = 0;
         await message.channel.send([
           "__**Song selection:**__",
           videos.map(v => ++index + " - **" + v.title + "**").join("\n"),
-          "**Select your song by sending the number from 1 to 10 in chat.**"
+          "**Select your song by sending the number from 1 to " + videos.length + " in chat.**"
         ].join("\n\n"))
 
         let response;
         try {
-          response = await message.channel.awaitMessages(msg => 0 < msg.content && msg.content < 11 && msg.author.id == message.author.id, {
+          response = await message.channel.awaitMessages(msg => 0 < msg.content && msg.content < videos.length + 1 && msg.author.id == message.author.id, {
             maxMatches: 1,
             time: 10000,
             errors: ['time']
@@ -43,7 +44,7 @@ module.exports.run = async (client, message, args, config, queue) => {
           return message.channel.send("❌ Video selection timed out.")
         }
         const videoIndex = parseInt(response.first().content)
-        video = await ytdl.getBasicInfo(videos[videoIndex - 1].id)
+        video = await ytdl.getBasicInfo(videos[videoIndex - 1].videoId)
       } catch(e) {
         console.log(e)
         return message.channel.send("❌ No search results found.")
@@ -108,3 +109,5 @@ async function playSong(guild, queue, song) {
   
   serverQueue.textChannel.send("🎶 Now playing **" + song.title + "**")
 }
+
+const ytsr = (url) => new Promise((resolve, reject) => ytsearch(url, (err, r) => err ? reject(err) : resolve(r)))
