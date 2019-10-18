@@ -17,7 +17,7 @@
     "discord.js": "^11.5.1",
     "erlpack": "github:hammerandchisel/erlpack",
     "ffmpeg": "0.0.4",
-    "fs": "0.0.1-security",
+    "fs": "0.0.2",
     "libsodium-wrappers": "^0.7.5",
     "node-fetch": "^2.6.0",
     "node-opus": "^0.3.3",
