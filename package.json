@@ -1,0 +1,28 @@
+{
+  "name": "ytdl-discord-bot",
+  "description": "An example of how you can implement ytdl-core into Discord using discord.js.",
+  "main": "app.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gleeny/ytdl-discord-bot.git"
+  },
+  "author": "Promise <me@promise.solutions> (https://promise.solutions/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gleeny/ytdl-discord-bot/issues"
+  },
+  "homepage": "https://github.com/gleeny/ytdl-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "ffmpeg": "0.0.4",
+    "fs": "0.0.1-security",
+    "libsodium-wrappers": "^0.7.5",
+    "node-fetch": "^2.6.0",
+    "node-opus": "^0.3.3",
+    "ytdl-core": "^1.0.0",
+    "ytpl": "^0.1.17",
+    "ytsr": "^0.1.8"
+  }
+}
