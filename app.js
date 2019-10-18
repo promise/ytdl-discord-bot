@@ -29,7 +29,7 @@ client.on("message", async message => {
       if (getPermissionLevel(message.member) < commandFile.permissionRequried) return message.channel.send("❌ You don't have permission! For help type `" + config.prefix + "help`.");
       commandFile.run(client, message, args, config, queue)
     } catch(e) {}
-  } if (message.content.match(`^<@!?${client.user.id}>`)) return message.channel.send("👋 My prefix is `" + config.prefix + "`. Commands are " + Object.keys(commands).map(c => "\`" + config.prefix + c + "\`").join(", ") + ".");
+  } else if (message.content.match(`^<@!?${client.user.id}>`)) return message.channel.send("👋 My prefix is `" + config.prefix + "`. Commands are " + Object.keys(commands).map(c => "\`" + config.prefix + c + "\`").join(", ") + ".");
 })
 
 let getPermissionLevel = (member) => {

@@ -1,3 +1,4 @@
+[![DeepScan grade](https://deepscan.io/api/teams/5752/projects/7618/branches/80372/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5752&pid=7618&bid=80372)
 [![Dependency Status](https://david-dm.org/gleeny/ytdl-discord-bot.svg)](https://david-dm.org/gleeny/ytdl-discord-bot)
 [![GitHub Issues](https://img.shields.io/github/issues-raw/gleeny/ytdl-discord-bot.svg)](https://github.com/gleeny/ytdl-discord-bot/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr-raw/gleeny/ytdl-discord-bot.svg)](https://github.com/gleeny/ytdl-discord-bot/pulls)

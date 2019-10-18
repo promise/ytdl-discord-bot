@@ -26,14 +26,15 @@ module.exports.run = async (client, message, args, config, queue) => {
       try {
         const videos = await ytsr(url, 10)
         let index = 0;
-        let botMsg = message.channel.send([
+        await message.channel.send([
           "__**Song selection:**__",
           videos.map(v => ++index + " - **" + v.title + "**").join("\n"),
           "**Select your song by sending the number from 1 to 10 in chat.**"
         ].join("\n\n"))
 
+        let response;
         try {
-          const response = await message.channel.awaitMessages(msg => 0 < msg.content && msg.content < 11 && msg.author.id == message.author.id, {
+          response = await message.channel.awaitMessages(msg => 0 < msg.content && msg.content < 11 && msg.author.id == message.author.id, {
             maxMatches: 1,
             time: 10000,
             errors: ['time']
