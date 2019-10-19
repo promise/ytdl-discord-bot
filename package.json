@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/gleeny/ytdl-discord-bot#readme",
   "dependencies": {
+    "bufferutil": "^4.0.1",
     "discord.js": "^11.5.1",
     "erlpack": "github:hammerandchisel/erlpack",
     "ffmpeg": "0.0.4",
@@ -21,8 +22,8 @@
     "libsodium-wrappers": "^0.7.5",
     "node-fetch": "^2.6.0",
     "node-opus": "^0.3.3",
+    "yt-search": "^0.4.1",
     "ytdl-core": "^1.0.0",
-    "ytpl": "^0.1.17",
-    "yt-search": "^0.4.1"
+    "ytpl": "^0.1.17"
   }
 }
