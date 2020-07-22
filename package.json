@@ -5,14 +5,14 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gleeny/ytdl-discord-bot.git"
+    "url": "git+https://github.com/promise/ytdl-discord-bot.git"
   },
   "author": "Promise <me@promise.solutions> (https://promise.solutions/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gleeny/ytdl-discord-bot/issues"
+    "url": "https://github.com/promise/ytdl-discord-bot/issues"
   },
-  "homepage": "https://github.com/gleeny/ytdl-discord-bot#readme",
+  "homepage": "https://github.com/promise/ytdl-discord-bot#readme",
   "dependencies": {
     "bufferutil": "^4.0.1",
     "discord.js": "^11.5.1",
