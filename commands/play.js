@@ -1,6 +1,6 @@
 module.exports.permissionRequired = 0
 
-const ytdl = require("ytdl-core"), ytpl = require("ytpl"), ytsearch = require("yt-search"), { Util } = require("discord.js");
+const ytdl = require("ytdl-core"), ytpl = require("ytpl"), ytsr = require("ytsr"), { Util } = require("discord.js");
 
 module.exports.run = async (client, message, args, config, queue) => {
   const voiceChannel = message.member.voiceChannel;
@@ -9,6 +9,8 @@ module.exports.run = async (client, message, args, config, queue) => {
   const permissions = voiceChannel.permissionsFor(message.guild.me)
   if (!permissions.has("CONNECT")) return message.channel.send("❌ I don't have permission to connect to the voice channel!")
   if (!permissions.has("SPEAK")) return message.channel.send("❌ I don't have permission to speak in the voice channel!")
+
+  if (!args.length) return message.channel.send("❌ You need to search for a video, or give me a URL!")
 
   const url = args.join(" ")
   if (url.includes("list=")) {
@@ -24,9 +26,12 @@ module.exports.run = async (client, message, args, config, queue) => {
       video = await ytdl.getBasicInfo(url)
     } catch(e) {
       try {
-        const results = await ytsr(url)
-        const videos = results.videos.slice(0, 10)
+        const results = await ytsr(url, { limit: 10 })
+        const videos = results.items
         let index = 0;
+
+        if (!videos.length) return message.channel.send("❌ No search results found.")
+
         await message.channel.send([
           "__**Song selection:**__",
           videos.map(v => ++index + " - **" + v.title + "**").join("\n"),
@@ -35,23 +40,23 @@ module.exports.run = async (client, message, args, config, queue) => {
 
         let response;
         try {
-          response = await message.channel.awaitMessages(msg => 0 < msg.content && msg.content < videos.length + 1 && msg.author.id == message.author.id, {
+          response = await message.channel.awaitMessages(msg => 0 < parseInt(msg.content) && parseInt(msg.content) < videos.length + 1 && msg.author.id == message.author.id, {
             maxMatches: 1,
-            time: 10000,
+            time: 30000,
             errors: ['time']
           });
         } catch(e) {
           return message.channel.send("❌ Video selection timed out.")
         }
         const videoIndex = parseInt(response.first().content)
-        video = await ytdl.getBasicInfo(videos[videoIndex - 1].videoId)
+        video = await ytdl.getBasicInfo(videos[videoIndex - 1].link.split("?v=")[1])
       } catch(e) {
         console.log(e)
-        return message.channel.send("❌ No search results found.")
+        return message.channel.send("❌ An unknown error occurred.")
       }
     }
     
-    await message.channel.send("✅ Song **" + video.title + "** has been added to the queue!")
+    await message.channel.send("✅ Song **" + video.videoDetails.title + "** has been added to the queue!")
     return await queueSong(video, message, voiceChannel, queue)
   }
 }
@@ -60,9 +65,9 @@ async function queueSong(video, message, voiceChannel, queue) {
   const serverQueue = queue.get(message.guild.id)
 
   const song = {
-    id: video.id || video.video_id,
-    title: Util.escapeMarkdown(video.title),
-    url: "https://www.youtube.com/watch?v=" + (video.id || video.video_url)
+    id: video.videoDetails.videoId,
+    title: Util.escapeMarkdown(video.videoDetails.title),
+    url: video.videoDetails.video_url
   }
 
   if (!serverQueue) {
@@ -109,5 +114,3 @@ async function playSong(guild, queue, song) {
   
   serverQueue.textChannel.send("🎶 Now playing **" + song.title + "**")
 }
-
-const ytsr = (url) => new Promise((resolve, reject) => ytsearch(url, (err, r) => err ? reject(err) : resolve(r)))
