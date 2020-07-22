@@ -41,7 +41,7 @@ Some packages in the code use the npm-package windows-build-tools. For this to b
 
 Want to contribute? Great, we love that! Please take your time on [opening a new issue](https://github.com/promise/ytdl-discord-bot/issues/new).
 
-## Contributrs
+## Contributors
 
 You can see all contributors and their GitHub-profiles [here](https://github.com/promise/ytdl-discord-bot/graphs/contributors).
 
