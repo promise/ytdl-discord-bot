@@ -99,7 +99,7 @@ async function playSong(guild, queue, song) {
     return;
   }
 
-  serverQueue.connection.playStream(ytdl(song.id))
+  serverQueue.connection.playStream(ytdl(song.id), { bitrate: 'auto' })
     .on("end", reason => {
       serverQueue.songs.shift();
       playSong(guild, queue, serverQueue.songs[0])
