@@ -1,4 +1,4 @@
-const Discord = require("discord.js"), ytdl = require("ytdl-core"), fs = require("fs"), config = require("./config.json");
+const Discord = require("discord.js"), fs = require("fs"), config = require("./config.json");
 
 const client = new Discord.Client({ messageSweepInterval: 60, disableEveryone: true })
 const queue = new Map();
