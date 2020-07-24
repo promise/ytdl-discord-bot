@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args, config, queue) => {
 
   return message.channel.send([
     "__**Song queue:**__",
-    serverQueue.songs.slice(1).map(song => "- " + song.title).join("\n"),
-    "**Now playing:** " + serverQueue.songs[0].title
+    serverQueue.songs.slice(1).map(song => `- ${song.title}`).join("\n"),
+    `**Now playing:** ${serverQueue.songs[0].title}`
   ].join("\n\n"))
 }

@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args, config, queue) => {
     const playlist = await ytpl(url.split("list=")[1])
     const videos = playlist.items;
 
-    message.channel.send("✅ Playlist **" + playlist.title + "** (" + videos.length + ") has been added to the queue!")
+    message.channel.send(`✅ Playlist **${playlist.title}** (${videos.length}) has been added to the queue!`)
 
     for (const video of videos) await queueSong(video, message, voiceChannel, queue)
   } else {
@@ -34,8 +34,8 @@ module.exports.run = async (client, message, args, config, queue) => {
 
         await message.channel.send([
           "__**Song selection:**__",
-          videos.map(v => ++index + " - **" + v.title + "**").join("\n"),
-          "**Select your song by sending the number from 1 to " + videos.length + " in chat.**"
+          videos.map(v => `${++index} - **${v.title}**`).join("\n"),
+          `**Select your song by sending the number from 1 to ${videos.length} in chat.**`
         ].join("\n\n"))
 
         let response;
@@ -56,7 +56,7 @@ module.exports.run = async (client, message, args, config, queue) => {
       }
     }
     
-    await message.channel.send("✅ Song **" + video.videoDetails.title + "** has been added to the queue!")
+    await message.channel.send(`✅ Song **${video.videoDetails.title}** has been added to the queue!`)
     return await queueSong(video, message, voiceChannel, queue)
   }
 }
@@ -114,5 +114,5 @@ async function playSong(guild, queue, song) {
     .on("error", console.error)
     .setVolumeLogarithmic(serverQueue.volume / 250)
   
-  serverQueue.textChannel.send("🎶 Now playing **" + song.title + "**")
+  serverQueue.textChannel.send(`🎶 Now playing **${song.title}**`)
 }
