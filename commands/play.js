@@ -3,7 +3,7 @@ module.exports.permissionRequired = 0
 const ytdl = require("ytdl-core"), ytpl = require("ytpl"), ytsr = require("ytsr"), { Util } = require("discord.js");
 
 module.exports.run = async (client, message, args, config, queue) => {
-  const voiceChannel = message.member.voiceChannel;
+  const voiceChannel = message.member.voice.channel;
   if (!voiceChannel) return message.channel.send("❌ You are not in a voice channel, please join one first!")
 
   const permissions = voiceChannel.permissionsFor(message.guild.me)
@@ -41,7 +41,7 @@ module.exports.run = async (client, message, args, config, queue) => {
         let response;
         try {
           response = await message.channel.awaitMessages(msg => 0 < parseInt(msg.content) && parseInt(msg.content) < videos.length + 1 && msg.author.id == message.author.id, {
-            maxMatches: 1,
+            max: 1,
             time: 30000,
             errors: ['time']
           });
@@ -104,10 +104,12 @@ async function playSong(guild, queue, song) {
     return;
   }
 
-  serverQueue.connection.playStream(ytdl(song.id), { bitrate: 'auto' })
-    .on("end", reason => {
-      serverQueue.songs.shift();
-      playSong(guild, queue, serverQueue.songs[0])
+  serverQueue.connection.play(ytdl(song.id), { bitrate: 'auto' })
+    .on("speaking", speaking => {
+      if (!speaking) {
+        serverQueue.songs.shift();
+        playSong(guild, queue, serverQueue.songs[0])
+      }
     })
     .on("error", console.error)
     .setVolumeLogarithmic(serverQueue.volume / 250)

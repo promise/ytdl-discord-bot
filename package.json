@@ -15,7 +15,7 @@
   "homepage": "https://github.com/promise/ytdl-discord-bot#readme",
   "dependencies": {
     "bufferutil": "^4.0.1",
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.2.0",
     "erlpack": "github:hammerandchisel/erlpack",
     "ffmpeg": "0.0.4",
     "fs": "0.0.2",
@@ -24,6 +24,6 @@
     "node-opus": "^0.3.3",
     "ytdl-core": "^3.1.2",
     "ytpl": "^0.2.0",
-    "ytsr": "^0.1.17"
+    "ytsr": "^0.1.18"
   }
 }
