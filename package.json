@@ -20,7 +20,7 @@
     "erlpack": "github:discordapp/erlpack",
     "ffmpeg": "0.0.4",
     "fs": "0.0.2",
-    "libsodium-wrappers": "^0.7.6",
+    "libsodium-wrappers": "^0.7.8",
     "node-fetch": "^2.6.0",
     "utf-8-validate": "^5.0.2",
     "ytdl-core": "^3.2.0",
