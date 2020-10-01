@@ -11,3 +11,9 @@ module.exports.run = async (client, message, args, config, queue) => {
   serverQueue.connection.dispatcher.resume()
   return message.channel.send("▶ The player has been resumed!")
 }
+
+module.exports.help = {
+  name: "resume",
+  description: "Resumes audio that was previously paused",
+  usage: "resume",
+};

@@ -9,3 +9,9 @@ module.exports.run = async (client, message, args, config, queue) => {
   await message.channel.send("⏭ The player has been skipped!")
   return serverQueue.connection.dispatcher.end()
 }
+
+module.exports.help = {
+  name: "skip",
+  description: "Skips the currently playing audio to the next one",
+  usage: "skip",
+};

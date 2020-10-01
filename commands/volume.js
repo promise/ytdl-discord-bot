@@ -15,3 +15,9 @@ module.exports.run = async (client, message, args, config, queue) => {
   serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 250);
   return message.channel.send(`🔊 The volume is now ${volume}!`)
 }
+
+module.exports.help = {
+  name: "volume",
+  description: "Shows the current volume level, or changes volume to a provided value",
+  usage: "volume <optional new volume>",
+};

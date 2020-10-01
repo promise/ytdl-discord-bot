@@ -10,3 +10,9 @@ module.exports.run = async (client, message, args, config, queue) => {
   serverQueue.connection.dispatcher.end()
   return message.channel.send("⏹ The player has stopped!")
 }
+
+module.exports.help = {
+  name: "stop",
+  description: "Stops the player",
+  usage: "stop",
+};
