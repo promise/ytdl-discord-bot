@@ -11,3 +11,9 @@ module.exports.run = async (client, message, args, config, queue) => {
   serverQueue.connection.dispatcher.pause(true)
   return message.channel.send("⏸ The player has been paused!")
 }
+
+module.exports.help = {
+  name: "pause",
+  description: "Pause the currently playing audio",
+  usage: "pause",
+};

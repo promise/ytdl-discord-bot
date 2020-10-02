@@ -3,6 +3,9 @@ const Discord = require("discord.js"), fs = require("fs"), config = require("./c
 const client = new Discord.Client({ messageSweepInterval: 60, disableEveryone: true })
 const queue = new Map();
 
+// stores a global list of commands and their properties
+client.commands = new Discord.Collection();
+
 client.on("ready", async () => {
   console.log(`Ready as ${client.user.tag}`);
 })
@@ -12,7 +15,11 @@ let commands = {} // { "command": "path/to/command.js" }
 fs.readdir("./commands/", (err, files) => {
   if (err) console.error(err);
   console.log(files)
-  for (var file of files) if (file.endsWith(".js")) commands[file.replace(".js", "")] = `./commands/${file}`;
+  for (var file of files) if (file.endsWith(".js")) {
+    commands[file.replace(".js", "")] = `./commands/${file}`;
+    let props = require(`./commands/${file}`);
+    client.commands.set(props.help.name, props);
+  }
 })
 
 client.on("message", async message => {

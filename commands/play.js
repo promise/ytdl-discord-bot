@@ -116,3 +116,9 @@ async function playSong(guild, queue, song) {
   
   serverQueue.textChannel.send(`🎶 Now playing **${song.title}**`)
 }
+
+module.exports.help = {
+  name: "play",
+  description: "Plays the provided audio",
+  usage: "play <url or name>",
+};

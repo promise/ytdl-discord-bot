@@ -6,3 +6,9 @@ module.exports.run = async (client, message, args, config, queue) => {
 
   return message.channel.send(`🎶 Now playing **${serverQueue.songs[0].title}**`)
 }
+
+module.exports.help = {
+  name: "np",
+  description: "Shows what's currently playing",
+  usage: "np",
+};

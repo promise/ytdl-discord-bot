@@ -7,3 +7,9 @@ module.exports.run = async (client, message, args, config, queue) => {
   const botMsg = await message.channel.send("〽 Pinging ...");
   botMsg.edit(`🏓 Pong! Latency is \`${botMsg.createdTimestamp - message.createdTimestamp}ms\` and API latency is \`${Math.round(client.ws.ping)}ms\`${bestRegion && bestRegion !== message.guild.region ? "\n❗ My best region is \`" + bestRegion + "\`, get the best latency by switching over to it." : ""}`);
 }
+
+module.exports.help = {
+  name: "ping",
+  description: "Shows API latency and related info",
+  usage: "ping",
+};

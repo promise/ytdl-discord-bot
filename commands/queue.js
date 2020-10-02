@@ -11,3 +11,9 @@ module.exports.run = async (client, message, args, config, queue) => {
     `**Now playing:** ${serverQueue.songs[0].title}`
   ].join("\n\n"))
 }
+
+module.exports.help = {
+  name: "queue",
+  description: "Shows songs currently in queue",
+  usage: "queue",
+};
