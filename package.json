@@ -16,7 +16,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "bufferutil": "^4.0.1",
-    "discord.js": "^12.3.1",
+    "discord.js": "^12.4.0",
     "erlpack": "github:discordapp/erlpack",
     "ffmpeg": "0.0.4",
     "fs": "0.0.2",
