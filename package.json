@@ -23,7 +23,7 @@
     "libsodium-wrappers": "^0.7.8",
     "node-fetch": "^2.6.1",
     "utf-8-validate": "^5.0.2",
-    "ytdl-core": "^3.4.0",
+    "ytdl-core": "^3.4.2",
     "ytpl": "^1.0.1",
     "ytsr": "^1.0.4",
     "zlib-sync": "^0.1.7"
