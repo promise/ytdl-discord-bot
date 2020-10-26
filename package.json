@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/promise/ytdl-discord-bot#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
+    "@discordjs/opus": "^0.3.3",
     "bufferutil": "^4.0.1",
     "discord.js": "^12.3.1",
     "erlpack": "github:discordapp/erlpack",
