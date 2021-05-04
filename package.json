@@ -22,7 +22,7 @@
     "fs": "0.0.2",
     "libsodium-wrappers": "^0.7.9",
     "node-fetch": "^2.6.1",
-    "utf-8-validate": "^5.0.4",
+    "utf-8-validate": "^5.0.5",
     "ytdl-core": "^4.5.0",
     "ytpl": "^2.1.1",
     "ytsr": "^3.4.1",
