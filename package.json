@@ -24,7 +24,7 @@
     "node-fetch": "^2.6.1",
     "utf-8-validate": "^5.0.4",
     "ytdl-core": "^4.5.0",
-    "ytpl": "^2.1.1",
+    "ytpl": "^2.2.3",
     "ytsr": "^3.4.1",
     "zlib-sync": "^0.1.7"
   }
