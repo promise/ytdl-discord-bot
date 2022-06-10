@@ -21,7 +21,7 @@
     "ffmpeg": "0.0.4",
     "fs": "0.0.2",
     "libsodium-wrappers": "^0.7.9",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.2.6",
     "utf-8-validate": "^5.0.7",
     "ytdl-core": "^4.9.1",
     "ytpl": "^2.2.3",
